@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Ini Peta Interaktif</title>
+	<title>Peta Rumah Sakit Bandung</title>
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
 		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 	<style>
@@ -32,10 +32,13 @@
 			maxZoom: 18
 		}).addTo(map);
 
-		// Export Button
-		var showExport = '<button onclick="loadlayer()" title="Refresh map" class="">reload</button>';
+		// Search Map
+		var searchMap = ''
 
-		var showExportButton = new L.Control({ position: "topright" });
+		// Export Button
+		var showExport = '<button onclick="loadlayer()" title="Refresh map" class="">refresh</button>';
+
+		var showExportButton = new L.Control({ position: "bottomright" });
 		showExportButton.onAdd = function (map) {
 			this._div = L.DomUtil.create('div');
 			this._div.innerHTML = showExport
@@ -55,7 +58,7 @@
 					});
 				},
 			});
-			$.getJSON("https://script.google.com/macros/s/AKfycby_yhsQFYLMYr-3Fz2bvSrW2IKskU57u71o-ZgCcd-3mdTza5xqCwJXVBlFCmV3Pl4c/exec", function (data) {
+			$.getJSON("https://script.google.com/macros/s/AKfycbxGJL6BVDUzKUzA5d_3xYJhOewPcAo81a6j7xDNSpCkEEWDr_5axxlBkIZbhvygEPL2/exec", function (data) {
 				point.addData(data);
 				map.addLayer(point);
 				map.fitBounds(point.getBounds());
